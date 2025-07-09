@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-primary-test {
+    @apply py-2 px-4 bg-muted-teal text-white font-semibold rounded-lg shadow-md hover:bg-opacity-80;
+  }
+}
+
+/* Untuk logo yang tidak stretch dan responsif */
+.company-logo {
+    max-width: 200px; /* Maksimum lebar logo */
+    height: auto;     /* Menjaga rasio aspek */
+    display: block;   /* Penting agar max-width bekerja dengan baik */
+    margin: 0 auto;   /* Contoh untuk memusatkan logo jika di dalam blok */
+}
+
