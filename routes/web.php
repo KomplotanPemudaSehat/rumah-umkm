@@ -91,7 +91,7 @@ Route::get('/reset-password-otp', [ResetPasswordOtpController::class, 'showReset
 // Rute untuk menyimpan password baru
 Route::post('/reset-password-otp', [ResetPasswordOtpController::class, 'resetPassword'])->name('password.update.otp');
 
-
+Route::get('/tentang-kami', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 
 // Rute default Breeze biasanya ada di sini, pastikan tidak ada duplikat Route::get('/')
 require __DIR__.'/auth.php';

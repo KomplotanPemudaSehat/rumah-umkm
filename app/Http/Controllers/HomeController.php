@@ -25,4 +25,9 @@ class HomeController extends Controller
 
         return view('home', compact('featuredProducts', 'latestArticles', 'popularSellers'));
     }
+
+    public function about()
+    {
+        return view('about');
+    }
 }
