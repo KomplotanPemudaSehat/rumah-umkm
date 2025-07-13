@@ -26,6 +26,7 @@ use App\Http\Controllers\Auth\ResetPasswordOtpController;
 
 use App\Http\Controllers\StoreProfileController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\Profile\ChangePasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -74,6 +75,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::get('/categories', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('categories.index');
     Route::get('/products', [AdminProductController::class, 'index'])->name('products.index');
     Route::delete('/products/{product}', [AdminProductController::class, 'destroy'])->name('products.destroy');
+    Route::get('/notifications', [App\Http\Controllers\Admin\NotificationController::class, 'index'])->name('notifications.index');
 });
 
 // Halaman Lupa Password akan mengirim request ke sini untuk mengirim OTP
@@ -92,6 +94,11 @@ Route::get('/reset-password-otp', [ResetPasswordOtpController::class, 'showReset
 Route::post('/reset-password-otp', [ResetPasswordOtpController::class, 'resetPassword'])->name('password.update.otp');
 
 Route::get('/tentang-kami', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/ganti-password', [ChangePasswordController::class, 'create'])->name('password.change');
+    Route::post('/ganti-password', [ChangePasswordController::class, 'store'])->name('password.change.store');
+});
 
 // Rute default Breeze biasanya ada di sini, pastikan tidak ada duplikat Route::get('/')
 require __DIR__.'/auth.php';

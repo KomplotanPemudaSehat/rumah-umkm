@@ -1,33 +1,48 @@
 <?php
 
-// database/seeders/AdminUserSeeder.php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // Menggunakan updateOrCreate untuk mencegah duplikasi
-        // Ini akan mencari user dengan email 'admin@rumahumkm.com'.
-        // Jika tidak ada, ia akan membuatnya. Jika sudah ada, ia akan memastikannya
-        // memiliki data yang benar (misal: peran sebagai admin).
-        User::updateOrCreate(
-            ['email' => 'admin@rumahumkm.com'], // Kunci untuk mencari
-            [
-                'name' => 'Admin',
-                'password' => Hash::make('password'), // Ganti dengan password yang kuat
+        // Hapus semua akun admin yang lama untuk memastikan kebersihan data
+        User::where('role', 'admin')->delete();
+
+        // Daftar nama-nama admin baru
+        $admins = [
+            'Riffan',
+            'Roro',
+            'Widi',
+            'Hardy',
+            'Galih',
+            'Diah',
+            'Qorisa'
+        ];
+
+        // Loop untuk membuat setiap akun admin
+        foreach ($admins as $adminName) {
+            User::create([
+                'name' => $adminName,
+                // Membuat email unik berdasarkan nama, contoh: riffan@rumahumkm.com
+                'email' => Str::lower($adminName) . '@rumahumkm.com',
+                // Semua admin akan memiliki password default 'password'
+                'password' => Hash::make('password'),
                 'role' => 'admin',
-                'whatsapp_number' => '6281234567890',
-                'store_name' => 'Kantor Pusat Rumah UMKM',
-            ]
-        );
+                'whatsapp_number' => '6281234567890', // Nomor default
+                'store_name' => 'Admin ' . $adminName, // Nama toko default
+                'store_slug' => Str::slug('Admin ' . $adminName),
+            ]);
+        }
     }
 }

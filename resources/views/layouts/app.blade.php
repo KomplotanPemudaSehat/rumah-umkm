@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    {{-- PERUBAHAN: Menambahkan plugin Intersect untuk Alpine.js --}}
     <script src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
@@ -31,11 +30,54 @@
         <div class="container mx-auto px-4 text-center">
             <p>&copy; {{ date('Y') }} Rumah UMKM. Platform Digital untuk UMKM Indonesia.</p>
             <div class="mt-2 text-sm space-x-4">
+                <a href="#" class="hover:text-blush-rose transition-colors">Kebijakan Privasi</a>
+                <span>&bull;</span>
                 <a href="{{ route('about') }}" class="hover:text-blush-rose transition-colors">Tentang Kami</a>
             </div>
         </div>
     </footer>
 
-    @stack('scripts')
+    @auth
+    @if(Auth::user()->isAdmin())
+    <script>
+        function showDesktopNotification(message) {
+            if (!("Notification" in window)) {
+                console.error("Browser ini tidak mendukung notifikasi desktop.");
+                return;
+            }
+            if (Notification.permission === "granted") {
+                new Notification('Permintaan OTP Baru!', {
+                    body: message,
+                    icon: "{{ asset('favicon.ico') }}"
+                });
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        showDesktopNotification(message);
+                    }
+                });
+            }
+        }
+
+        function initializeEchoListener() {
+            if (typeof window.Echo !== 'undefined') {
+                console.log('Echo is ready. Subscribing to PRIVATE channel: admin-notifications');
+
+                window.Echo.private('admin-notifications')
+                    .listen('OtpRequested', (e) => {
+                        console.log('%cEvent "OtpRequested" received:', 'color: green; font-weight: bold;', e);
+                        showDesktopNotification(e.message);
+                    });
+            } else {
+                setTimeout(initializeEchoListener, 500);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeEchoListener);
+    </script>
+    @endif
+@endauth
+
+
 </body>
 </html>

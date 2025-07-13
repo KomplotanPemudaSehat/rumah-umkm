@@ -21,7 +21,9 @@
         <h2 class="text-xl font-poppins font-bold mb-4 text-deep-graphite">Akses Cepat</h2>
         <div class="flex flex-wrap gap-4">
             <a href="{{ route('seller.products.index') }}" class="px-4 py-2 bg-muted-teal text-white rounded-md hover:bg-opacity-80 text-sm font-medium transition">Kelola Produk</a>
-            <a href="{{ route('seller.profile.edit') }}" class="px-4 py-2 bg-blush-rose text-deep-graphite rounded-md hover:bg-opacity-80 text-sm font-medium transition">Ubah Profil Toko</a>
+            <a href="{{ route('seller.profile.edit') }}" class="px-4 py-2 bg-blush-rose text-white rounded-md hover:bg-opacity-80 text-sm font-medium transition">Ubah Profil Toko</a>
+            {{-- Di dalam div "Akses Cepat" --}}
+            <a href="{{ route('password.change') }}" class="px-4 py-2 bg-coral-red text-white rounded-md hover:bg-opacity-80 text-sm font-medium transition">Ganti Password</a>
         </div>
     </div>
 @endsection
