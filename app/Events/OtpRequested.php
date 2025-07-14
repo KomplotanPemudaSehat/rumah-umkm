@@ -30,7 +30,7 @@ class OtpRequested implements ShouldBroadcast
     {
         // Menggunakan channel publik, bukan privat
         return [
-            new Channel('admin-notifications'),
+            new PrivateChannel('admin-notifications'),
         ];
     }
 }
