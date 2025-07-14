@@ -1,10 +1,22 @@
 <x-guest-layout>
-    <div class="font-poppins text-2xl text-deep-graphite mb-4">
+    <div class="font-poppins text-2xl text-deep-graphite mb-4 text-center">
         Verifikasi Kode OTP
     </div>
-    <p class="text-sm text-soft-navy mb-4">
-        Kami telah mengirimkan kode 6 digit ke email Anda: <strong>{{ session('email') }}</strong>. Silakan masukkan kode tersebut di bawah ini.
-    </p>
+
+    <!-- Instruksi baru untuk menghubungi Instagram -->
+    <div class="text-center text-sm text-soft-navy mb-4 p-4 border border-muted-teal/20 bg-muted-teal/10 rounded-lg">
+        <p class="font-semibold text-deep-graphite mb-2">Hubungi Admin untuk Kode OTP</p>
+        <p>
+            Untuk mendapatkan kode verifikasi Anda, silakan kirim pesan (DM) ke akun Instagram kami.
+        </p>
+        <a href="https://www.instagram.com/umkminofficial/" target="_blank" class="mt-3 inline-block bg-muted-teal text-white font-bold text-xs py-2 px-4 rounded-lg shadow-md hover:bg-opacity-90 transition-shadow duration-300">
+            <i class="fab fa-instagram mr-1"></i> <!-- Ikon opsional, pastikan Font Awesome dimuat -->
+            Hubungi @umkminofficial
+        </a>
+        <p class="mt-3">
+            Setelah mendapatkan kode dari admin, masukkan pada kolom di bawah ini.
+        </p>
+    </div>
 
     <form method="POST" action="{{ route('otp.verify') }}">
         @csrf
