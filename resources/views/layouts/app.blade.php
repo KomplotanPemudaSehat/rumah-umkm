@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Rumah UMKM')</title>
+    <title>@yield('title', 'UMKMin')</title>
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

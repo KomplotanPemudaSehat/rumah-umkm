@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Tentang Rumah UMKM')
+@section('title', 'Tentang UMKMin')
 
 @section('content')
 {{-- Menambahkan kelas 'text-center' di container utama --}}

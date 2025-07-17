@@ -4,7 +4,7 @@
             <div class="flex">
                 <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
                     {{-- PERUBAHAN: Menggunakan tag <img> untuk logo --}}
-                    <img class="block h-14 w-auto" src="{{ asset('images/logo.png') }}" alt="Logo Rumah UMKM">
+                    <img class="block h-14 w-auto" src="{{ asset('images/Logo-umkmin.png') }}" alt="Logo Rumah UMKM">
                 </a>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">

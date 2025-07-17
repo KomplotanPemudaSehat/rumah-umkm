@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Selamat Datang di Rumah UMKM')
+@section('title', 'Selamat Datang di UMKMin')
 @section('content')
     {{-- PERUBAHAN: Menambahkan background image dan overlay pada hero section --}}
     <div class="relative text-center py-20 lg:py-24 rounded-lg shadow-xl mb-12 overflow-hidden">
