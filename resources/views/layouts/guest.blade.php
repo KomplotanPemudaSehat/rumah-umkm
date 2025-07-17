@@ -29,7 +29,7 @@
             <div class="relative z-10 w-full flex flex-col items-center px-4">
                 {{-- PERUBAHAN: Mengganti teks dengan komponen logo --}}
                 <a href="/">
-                    <img src="{{ asset('images/logo.png') }}" alt="Logo Perusahaan Anda" style="width: 200px; height: auto;">
+                    <img src="{{ asset('images/Logo-umkmin.png') }}" alt="Logo Perusahaan Anda" style="width: 200px; height: auto;">
                  </a>
             </div>
 
