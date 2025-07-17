@@ -1,20 +1,20 @@
-<nav class="bg-cloud-white shadow-sm sticky top-0 z-50" x-data="{ open: false }">
+<nav class="bg-biru-keren shadow-sm sticky top-0 z-50" x-data="{ open: false }">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <a href="{{ route('home') }}" class="flex-shrink-0 flex items-center">
                     {{-- PERUBAHAN: Menggunakan tag <img> untuk logo --}}
-                    <img class="block h-10 w-auto" src="{{ asset('images/logo.png') }}" alt="Logo Rumah UMKM">
+                    <img class="block h-14 w-auto" src="{{ asset('images/logo.png') }}" alt="Logo Rumah UMKM">
                 </a>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                <a href="{{ route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('home') ? 'border-muted-teal' : 'border-transparent' }} text-sm font-medium text-deep-graphite hover:border-muted-teal hover:text-muted-teal transition-colors">Beranda</a>
-                <a href="{{ route('products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('products.*') ? 'border-muted-teal' : 'border-transparent' }} text-sm font-medium text-deep-graphite hover:border-muted-teal hover:text-muted-teal transition-colors">Produk</a>
-                <a href="{{ route('articles.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('articles.*') ? 'border-muted-teal' : 'border-transparent' }} text-sm font-medium text-deep-graphite hover:border-muted-teal hover:text-muted-teal transition-colors">Blog</a>
+                <a href="{{ route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('home') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Beranda</a>
+                <a href="{{ route('products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('products.*') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Produk</a>
+                <a href="{{ route('articles.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('articles.*') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Blog</a>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
                 @guest
-                    <a href="{{ route('login') }}" class="text-sm font-medium text-soft-navy hover:text-muted-teal transition-colors">Masuk</a>
+                    <a href="{{ route('login') }}" class="text-sm font-medium text-cloud-white hover:text-muted-teal transition-colors">Masuk</a>
                     <a href="{{ route('register') }}" class="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-muted-teal hover:bg-opacity-80 transition-colors">Daftar</a>
                 @else
                     <div x-data="{ dropdownOpen: false }" class="relative">
@@ -39,7 +39,7 @@
             </div>
             <!-- Tombol Hamburger untuk Mobile -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-deep-graphite hover:text-muted-teal hover:bg-cloud-white/50 focus:outline-none transition">
+                <button @click="open = !open" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-cloud-white hover:text-biru-keren hover:bg-cloud-white/50 focus:outline-none transition">
                     <span class="sr-only">Buka menu utama</span>
                     <svg class="h-6 w-6" :class="{'hidden': open, 'block': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
                     <svg class="h-6 w-6" :class="{'block': open, 'hidden': !open }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>

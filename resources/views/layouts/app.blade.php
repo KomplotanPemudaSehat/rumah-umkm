@@ -26,7 +26,7 @@
         @yield('content')
     </main>
 
-    <footer class="bg-deep-graphite text-cloud-white py-8 mt-12">
+    <footer class="bg-biru-footer text-cloud-white py-8 mt-12">
         <div class="container mx-auto px-4 text-center">
             <p>&copy; {{ date('Y') }} Rumah UMKM. Platform Digital untuk UMKM Indonesia.</p>
             <div class="mt-2 text-sm space-x-4">

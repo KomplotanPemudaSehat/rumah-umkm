@@ -1,15 +1,24 @@
 @extends('layouts.app')
 @section('title', 'Selamat Datang di Rumah UMKM')
 @section('content')
-    <div class="text-center py-12 bg-white rounded-lg shadow-md mb-12 border border-soft-navy/10">
-        <h1 class="text-4xl font-poppins font-bold text-deep-graphite">Rumah UMKM</h1>
-        <p class="text-xl text-soft-navy mt-2">Etalase Digital untuk Produk Lokal Terbaik Indonesia</p>
+    {{-- PERUBAHAN: Menambahkan background image dan overlay pada hero section --}}
+    <div class="relative text-center py-20 lg:py-24 rounded-lg shadow-xl mb-12 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img src="{{ asset('images/home-hero-bg.jpg') }}" alt="Latar Belakang UMKM" class="w-full h-full object-cover">
+            <!-- Overlay Gelap -->
+            <div class="absolute inset-0 bg-gelap/60"></div>
+        </div>
         
-        <div class="mt-8 flex flex-col space-y-4 px-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 sm:px-0">
-            <a href="{{ route('products.index') }}" class="inline-block py-2 px-8 bg-muted-teal text-white font-semibold rounded-lg shadow-md hover:bg-opacity-80 transition-all text-center">Jelajahi Produk</a>
-            @guest
-            <a href="{{ route('register') }}" class="inline-block py-2 px-8 bg-blush-rose text-deep-graphite font-semibold rounded-lg shadow-md hover:bg-opacity-80 transition-all text-center">Daftar Sekarang</a>
-            @endguest
+        <div class="relative z-10 px-4">
+            <h1 class="text-4xl lg:text-5xl font-poppins font-bold text-white">UMKMin</h1>
+            <p class="text-xl text-cloud-white/90 mt-2">Etalase Digital untuk Produk Lokal Terbaik Indonesia</p>
+            <div class="mt-8 flex flex-col space-y-4 px-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 sm:px-0">
+                <a href="{{ route('products.index') }}" class="inline-block py-3 px-8 bg-muted-teal text-white font-semibold rounded-lg shadow-md hover:bg-opacity-80 transition-all text-center">Jelajahi Produk</a>
+                @guest
+                <a href="{{ route('register') }}" class="inline-block py-3 px-8 bg-blush-rose text-white font-semibold rounded-lg shadow-md hover:bg-opacity-80 transition-all text-center">Daftar Sekarang</a>
+                @endguest
+            </div>
         </div>
     </div>
 
@@ -22,7 +31,6 @@
         @endforelse
     </div>
 
-    {{-- PERUBAHAN: Mengganti Grid menjadi Carousel --}}
     <div class="mt-16">
         <h2 class="text-2xl font-poppins font-bold text-deep-graphite mb-6">Daftar UMKM</h2>
         <div x-data="{

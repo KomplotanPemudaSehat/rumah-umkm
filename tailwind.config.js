@@ -16,11 +16,14 @@ export default {
                 poppins: ['Poppins', 'sans-serif'],
             },
             colors: {
+                'biru-keren': '#003878',
                 'cloud-white': '#F5F5F7',
-                'deep-graphite': '#2E2E2E',
+                'deep-graphite': '#6687ae',
                 'soft-navy': '#64748B',
-                'muted-teal': '#5EAAA8',
-                'blush-rose': '#F2C6C2',
+                'muted-teal': '#325f93',
+                'blush-rose': '#007478',
+                'biru-footer': '#00326c',
+                'gelap': '#2e2c2cff',
                 // Warna Kategori
                 'coral-red': '#F26457',
                 'stone-green': '#8FA998',

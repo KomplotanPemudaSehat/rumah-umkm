@@ -58,11 +58,11 @@
             @php
                 $team = [
                     ['name' => 'Ananda Riffan Fachrizki', 'role' => 'Ketua', 'photo' => 'ananda.jpg'],
-                    ['name' => 'Roro Naifah Kamila', 'role' => 'Sekretaris', 'photo' => 'roro.png'],
+                    ['name' => 'Roro Naifah Kamila', 'role' => 'Sekretaris', 'photo' => 'roro.jpg'],
                     ['name' => 'Moh Hardyansyah Lazuardi', 'role' => 'Bendahara', 'photo' => 'hardy.jpg'],
-                    ['name' => 'Galih Aulia Azzahra', 'role' => 'Humas', 'photo' => 'galih.jpg'],
-                    ['name' => 'Widi Ardiyansyah', 'role' => 'Sie Dokumentasi', 'photo' => 'widi.jpg'],
-                    ['name' => 'Diah Ayu Nurlestari', 'role' => 'Sie Desain Grafis', 'photo' => 'diah.jpg'],
+                    ['name' => 'Galih Aulia Az-Zahra Hakim', 'role' => 'Humas', 'photo' => 'galih.jpg'],
+                    ['name' => 'Widi Ardiyansyah', 'role' => 'Dokumentasi', 'photo' => 'widi.jpg'],
+                    ['name' => 'Diah Ayu Nurlestari', 'role' => 'Desain Grafis', 'photo' => 'diah.jpg'],
                 ];
             @endphp
             
