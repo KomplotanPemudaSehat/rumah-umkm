@@ -10,7 +10,7 @@
             <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <a href="{{ route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('home') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Beranda</a>
                 <a href="{{ route('products.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('products.*') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Produk</a>
-                <a href="{{ route('articles.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('articles.*') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Blog</a>
+                <a href="{{ route('articles.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('articles.*') ? 'border-cloud-white' : 'border-transparent' }} text-sm font-medium text-cloud-white hover:border-cloud-white hover:text-cloud-white transition-colors">Artikel</a>
             </div>
             <div class="hidden sm:ml-6 sm:flex sm:items-center">
                 @guest

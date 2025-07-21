@@ -9,12 +9,14 @@
             <div class="grid grid-cols-1 gap-6">
                 <div>
                     <label for="title" class="block text-sm font-medium text-soft-navy">Judul Artikel</label>
-                    <input type="text" name="title" id="title" value="{{ $article->title }}" required class="mt-1 block w-full rounded-md border-soft-navy shadow-sm focus:border-muted-teal focus:ring-muted-teal text-deep-graphite bg-cloud-white/50">
+                    <input type="text" name="title" id="title" value="{{ $article->title }}" required class="mt-1 block w-full rounded-md border-soft-navy shadow-sm">
                 </div>
+
                 <div>
                     <label for="content" class="block text-sm font-medium text-soft-navy">Konten</label>
-                    <textarea name="content" id="content" rows="10" required class="mt-1 block w-full rounded-md border-soft-navy shadow-sm focus:border-muted-teal focus:ring-muted-teal text-deep-graphite bg-cloud-white/50">{{ $article->content }}</textarea>
+                    <textarea id="content-editor" name="content" class="mt-1">{{ $article->content }}</textarea>
                 </div>
+
                 <div>
                     <label for="featured_image_path" class="block text-sm font-medium text-soft-navy">Ganti Gambar Utama</label>
                     @if($article->featured_image_path)
@@ -24,7 +26,7 @@
                 </div>
                 <div>
                     <label for="status" class="block text-sm font-medium text-soft-navy">Status</label>
-                    <select name="status" id="status" required class="mt-1 block w-full rounded-md border-soft-navy shadow-sm focus:border-muted-teal focus:ring-muted-teal text-deep-graphite bg-cloud-white/50">
+                    <select name="status" id="status" required class="mt-1 block w-full rounded-md border-soft-navy shadow-sm">
                         <option value="draft" {{ $article->status == 'draft' ? 'selected' : '' }}>Draft</option>
                         <option value="published" {{ $article->status == 'published' ? 'selected' : '' }}>Published</option>
                     </select>
@@ -35,4 +37,23 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('scripts')
+<script>
+    // PERBAIKAN: Menjalankan skrip setelah seluruh DOM selesai dimuat
+    document.addEventListener('DOMContentLoaded', function () {
+        tinymce.init({
+            selector: 'textarea#content-editor',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            // Menambahkan callback untuk debugging
+            setup: function (editor) {
+                editor.on('init', function (e) {
+                    console.log('TinyMCE berhasil diinisialisasi!');
+                });
+            }
+        });
+    });
+</script>
 @endsection

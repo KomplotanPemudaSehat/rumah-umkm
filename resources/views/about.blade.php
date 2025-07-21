@@ -63,12 +63,31 @@
                     ['name' => 'Galih Aulia Az-Zahra Hakim', 'role' => 'Humas', 'photo' => 'galih.jpg'],
                     ['name' => 'Widi Ardiyansyah', 'role' => 'Dokumentasi', 'photo' => 'widi.jpg'],
                     ['name' => 'Diah Ayu Nurlestari', 'role' => 'Desain Grafis', 'photo' => 'diah.jpg'],
+                    ['name' => 'Muhammad Ilyas', 'role' => 'Konten Planner', 'photo' => 'ilyas.jpg'],
                 ];
             @endphp
             
             @foreach($team as $member)
-            <div x-data="{ show: false }" x-intersect.once="show = true">
-                <div x-show="show" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform translate-y-5" x-transition:enter-end="opacity-100 transform translate-y-0" class="bg-white p-6 rounded-lg shadow-lg text-center border border-soft-navy/20 flex flex-col items-center h-full">
+
+            @php
+                // PERBAIKAN: Logika baru yang lebih kuat untuk menengahkan item terakhir
+                $extraClasses = [];
+                if ($loop->last) {
+                    // Aturan untuk layar kecil (sm: 2 kolom)
+                    if ($loop->count % 2 === 1) {
+                        $extraClasses[] = 'sm:col-span-2';
+                    }
+                    // Aturan untuk layar besar (lg: 3 kolom)
+                    if ($loop->count % 3 === 1) {
+                        $extraClasses[] = 'lg:col-start-2';
+                        $extraClasses[] = 'lg:col-span-1'; // Penting: Reset span agar tidak konflik dengan aturan sm
+                    }
+                }
+                $centerClass = implode(' ', $extraClasses);
+            @endphp
+            <div x-data="{ show: false }" x-intersect.once="show = true" class="{{ $centerClass }}">
+                {{-- PERUBAHAN: Jika item terakhir di layar kecil, bungkus dengan div untuk menengahkan --}}
+                <div x-show="show" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 transform translate-y-5" x-transition:enter-end="opacity-100 transform translate-y-0" class="bg-white p-6 rounded-lg shadow-lg text-center border border-soft-navy/20 flex flex-col items-center h-full {{ ($loop->last && $loop->count % 2 === 1) ? 'max-w-xs mx-auto' : '' }}">
                     <img src="{{ asset('images/team/' . $member['photo']) }}" onerror="this.src='https://placehold.co/150x150/5EAAA8/F5F5F7?text={{ substr($member['name'], 0, 1) }}'" alt="{{ $member['name'] }}" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover ring-4 ring-muted-teal/20">
                     <h4 class="font-poppins font-semibold text-lg text-deep-graphite">{{ $member['name'] }}</h4>
                     <p class="text-sm text-muted-teal">{{ $member['role'] }}</p>
