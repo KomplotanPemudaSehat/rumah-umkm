@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
     <script src="https://cdn.tiny.cloud/1/idoivpa8dpomk1skv0i67avslg65gq4maj0h8c7lpykn10jd/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Scripts -->
