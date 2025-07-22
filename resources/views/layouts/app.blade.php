@@ -80,6 +80,29 @@
     @endif
 @endauth
 
+    <script>
+        // Jalankan setelah seluruh halaman selesai dimuat
+        document.addEventListener('DOMContentLoaded', function () {
+            // Cek apakah elemen editor ada di halaman ini
+            if (document.querySelector('textarea#content-editor')) {
+                console.log('Elemen #content-editor ditemukan. Menginisialisasi TinyMCE...');
+                if (typeof tinymce !== 'undefined') {
+                    tinymce.init({
+                        selector: 'textarea#content-editor',
+                        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                        setup: function (editor) {
+                            editor.on('init', function (e) {
+                                console.log('%cTinyMCE berhasil diinisialisasi!', 'color: green; font-weight: bold;');
+                            });
+                        }
+                    });
+                } else {
+                    console.error('Fungsi tinymce tidak ditemukan.');
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>
