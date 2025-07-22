@@ -12,7 +12,8 @@
                 </div>
                 
                 <div>
-                    <label for="content" class="block text-sm font-medium text-soft-navy">Konten</label>
+                    <label for="content-editor" class="block text-sm font-medium text-soft-navy">Konten</label>
+                    {{-- Pastikan textarea ini memiliki id="content-editor" --}}
                     <textarea id="content-editor" name="content" class="mt-1"></textarea>
                 </div>
 
@@ -37,19 +38,25 @@
 
 @section('scripts')
 <script>
-    // PERBAIKAN: Menjalankan skrip setelah seluruh DOM selesai dimuat
+    // PERBAIKAN FINAL: Menjalankan skrip setelah seluruh halaman selesai dimuat
     document.addEventListener('DOMContentLoaded', function () {
-        tinymce.init({
-            selector: 'textarea#content-editor',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            // Menambahkan callback untuk debugging
-            setup: function (editor) {
-                editor.on('init', function (e) {
-                    console.log('TinyMCE berhasil diinisialisasi!');
-                });
-            }
-        });
+        console.log('Halaman selesai dimuat. Mencoba inisialisasi TinyMCE...');
+        
+        // Pastikan fungsi tinymce ada sebelum memanggilnya
+        if (typeof tinymce !== 'undefined') {
+            tinymce.init({
+                selector: 'textarea#content-editor',
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                setup: function (editor) {
+                    editor.on('init', function (e) {
+                        console.log('%cTinyMCE berhasil diinisialisasi!', 'color: green; font-weight: bold;');
+                    });
+                }
+            });
+        } else {
+            console.error('Fungsi tinymce tidak ditemukan. Pastikan skrip TinyMCE sudah dimuat di layout utama.');
+        }
     });
 </script>
 @endsection

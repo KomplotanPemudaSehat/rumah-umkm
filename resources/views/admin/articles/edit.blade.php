@@ -13,8 +13,9 @@
                 </div>
 
                 <div>
-                    <label for="content" class="block text-sm font-medium text-soft-navy">Konten</label>
-                    <textarea id="content-editor" name="content" class="mt-1">{{ $article->content }}</textarea>
+                    <label for="content-editor" class="block text-sm font-medium text-soft-navy">Konten</label>
+                    {{-- Pastikan textarea ini memiliki id="content-editor" --}}
+                    <textarea id="content-editor" name="content" class="mt-1"></textarea>
                 </div>
 
                 <div>
