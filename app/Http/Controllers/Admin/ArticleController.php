@@ -26,7 +26,7 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'featured_image_path' => 'nullable|image|max:2048',
+            'featured_image_path' => 'nullable|image|max:20480',
             'status' => 'required|in:draft,published',
         ]);
 
