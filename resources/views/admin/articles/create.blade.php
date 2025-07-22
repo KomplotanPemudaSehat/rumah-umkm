@@ -38,11 +38,10 @@
 
 @section('scripts')
 <script>
-    // PERBAIKAN FINAL: Menjalankan skrip setelah seluruh halaman selesai dimuat
-    document.addEventListener('DOMContentLoaded', function () {
-        console.log('Halaman selesai dimuat. Mencoba inisialisasi TinyMCE...');
+    // PERBAIKAN FINAL: Menggunakan setTimeout untuk memastikan skrip TinyMCE siap
+    setTimeout(function() {
+        console.log('Mencoba inisialisasi TinyMCE setelah jeda...');
         
-        // Pastikan fungsi tinymce ada sebelum memanggilnya
         if (typeof tinymce !== 'undefined') {
             tinymce.init({
                 selector: 'textarea#content-editor',
@@ -55,8 +54,8 @@
                 }
             });
         } else {
-            console.error('Fungsi tinymce tidak ditemukan. Pastikan skrip TinyMCE sudah dimuat di layout utama.');
+            console.error('Fungsi tinymce masih tidak ditemukan. Periksa kembali urutan skrip di layout utama.');
         }
-    });
+    }, 500); // Memberi jeda 500 milidetik
 </script>
 @endsection

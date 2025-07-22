@@ -42,19 +42,24 @@
 
 @section('scripts')
 <script>
-    // PERBAIKAN: Menjalankan skrip setelah seluruh DOM selesai dimuat
-    document.addEventListener('DOMContentLoaded', function () {
-        tinymce.init({
-            selector: 'textarea#content-editor',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            // Menambahkan callback untuk debugging
-            setup: function (editor) {
-                editor.on('init', function (e) {
-                    console.log('TinyMCE berhasil diinisialisasi!');
-                });
-            }
-        });
-    });
+    // PERBAIKAN FINAL: Menggunakan setTimeout untuk memastikan skrip TinyMCE siap
+    setTimeout(function() {
+        console.log('Mencoba inisialisasi TinyMCE setelah jeda...');
+        
+        if (typeof tinymce !== 'undefined') {
+            tinymce.init({
+                selector: 'textarea#content-editor',
+                plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                setup: function (editor) {
+                    editor.on('init', function (e) {
+                        console.log('%cTinyMCE berhasil diinisialisasi!', 'color: green; font-weight: bold;');
+                    });
+                }
+            });
+        } else {
+            console.error('Fungsi tinymce masih tidak ditemukan. Periksa kembali urutan skrip di layout utama.');
+        }
+    }, 500); // Memberi jeda 500 milidetik
 </script>
 @endsection
